@@ -1,0 +1,121 @@
+@import "variables";
+
+@font-face{
+  font-family: "OpenSansBold";
+  src: url("./fonts/OpenSans/OpenSans-Bold.ttf") format('ttf');
+}
+@font-face{
+  font-family: "OpenSans";
+  src: url("./fonts/OpenSans/OpenSans-Regular.ttf") format('ttf');
+}
+body {
+  font-family: OpenSans, sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.search {
+  &__input {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    border: 1px solid $border-color;
+    margin-bottom: 30px;
+    padding: 3px 0;
+
+    &__text {
+      width: 70%;
+      height: 30px;
+      border-right: 1px solid $border-color;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__tags {
+      width: 30%;
+      height: 30px;
+      &__field {
+        height: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+}
+.card {
+  width: 100%;
+  border-right: 1px solid $border-color;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  &:nth-child(2n){
+    border-right: none;
+  }
+  &__tags {
+    margin-bottom: 10px;
+  }
+  &__title {
+    font-family: OpenSans-Bold, sans-serif;
+    display: inline;
+  }
+  &__desc {
+    display: inline;
+    margin-top: 10px;
+  }
+}
+.tag {
+  padding: 2px 5px;
+  margin: 3px 1px;
+  font-size: 12px;
+  display: inline-block;
+  cursor: pointer;
+  &__react {
+    border-bottom: 2px solid #61dafb;
+    transition: 300ms ease-in;
+    &:hover {
+      background-color: #61dafb;
+      transition: 300ms ease-in;
+    }
+  }
+  &__vue {
+    border-bottom: 2px solid #4fc08d;
+    transition: 300ms ease-in;
+    &:hover {
+      background-color: #4fc08d;
+      color: white;
+      transition: 300ms ease-in;
+    }
+  }
+}
+.dropdown__menu__tag {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  top: 2px;
+  margin: 1px;
+  box-sizing: border-box;
+  padding: 10px 4px;
+  border: 1px solid $border-color;
+  > div {
+    font-size: 16px;
+    margin: 5px;
+  }
+}
+
