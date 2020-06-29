@@ -86,6 +86,13 @@ body {
   font-size: 12px;
   display: inline-block;
   cursor: pointer;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+  & > span {
+    color: $border-color;
+    font-weight: bold;
+  }
   &__react {
     border-bottom: 2px solid #61dafb;
     transition: 300ms ease-in;
@@ -101,6 +108,10 @@ body {
       background-color: #4fc08d;
       color: white;
       transition: 300ms ease-in;
+      & span {
+        color: white;
+        transition: 300ms ease-in;
+      }
     }
   }
 }

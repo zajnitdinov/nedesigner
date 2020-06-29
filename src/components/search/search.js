@@ -7,9 +7,7 @@ const Search = () => {
         <div className="search">
             <div className="search__input">
                 <SearchText/>
-                <div className="search__input__tags">
-                    <SearchTags/>
-                </div>
+                <SearchTags/>
             </div>
         </div>
     );
