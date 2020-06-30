@@ -1,0 +1,9 @@
+@mixin tag ($background-color, $color: black) {
+  border-bottom: 2px solid $background-color;
+  transition: 300ms ease-in;
+  &:hover {
+    background-color: $background-color;
+    color: $color;
+    transition: 300ms ease-in;
+  }
+}

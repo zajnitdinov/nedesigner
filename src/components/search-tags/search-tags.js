@@ -1,30 +1,40 @@
 import React, {Component} from 'react';
 import DropdownMenuTag from "../dropdown-menu-tag";
+import {connect} from "react-redux";
 
 class SearchTags extends Component {
-    state = {
-        visibleDropdownMenu: false
+    renderTags = () => {
+        const {tags, selectTag} = this.props;
+        return tags.map(el => (
+            <div key={el} className={`tag tag__${el}`} onClick={() => selectTag(el)}>
+                {el}
+            </div>))
     };
-    handleClick = (e) => {
-        this.setState({visibleDropdownMenu: true})
-    };
-    tags = ['react','vue'];
     render() {
+        const {openDropdownMenuTag} = this.props;
         return (
             <div className="search__input__tags">
                 <div className="search__input__tags__field"
-                    contentEditable='true'
-                    suppressContentEditableWarning="true"
-                    onClick={this.handleClick}>
-                    {this.tags.map(el => (
-                        <div className={`tag tag__${el}`}>
-                            {el} <span className='tag__delete'>x</span>
-                        </div>))}
+                    onClick={openDropdownMenuTag}>
+                    {this.renderTags()}
                 </div>
-                <DropdownMenuTag visible={this.state.visibleDropdownMenu}/>
+                <DropdownMenuTag/>
             </div>
         );
     }
 }
 
-export default SearchTags;
+const mapStateToProps = ({searchTags: {selectedTags}}) => {
+    return {tags: selectedTags};
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        selectTag: (payload) => dispatch({
+            type: 'DELETE_FROM_SELECTED_KEYS',
+            payload
+        }),
+        openDropdownMenuTag: () => dispatch({type: 'OPEN_DROPDOWN_MENU_TAG'})
+}};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchTags);

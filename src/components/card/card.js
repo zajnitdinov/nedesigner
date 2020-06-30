@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 
 class Card extends Component {
+    renderTags = () => {
+        const {tags} = this.props;
+        return tags.map(el => <div key={el} className={`tag tag__${el}`}>{el}</div>)
+    };
     render() {
+        const {title, url, desc} = this.props;
         return (
             <div className="card">
                 <div className="card__tags">
-                    <div className="tag tag__react">React</div>
-                    <div className="tag tag__vue">Vue</div>
+                    {this.renderTags()}
                 </div>
-                <a href="!#" className="card__title">Pinterest</a>.
-                <span className="card__desc">
-                        Чаще всего это первый ресурс, на который идут дизайнеры самых разных
-                        специализаций в поисках вдохновения. Самое удобная функция на
-                        Pinterest — это возможность создавать свои подборки.
-                    </span>
+                <a href={url} target='_blank' rel="noopener noreferrer" className="card__title">{title}</a>.
+                <span className="card__desc">{desc}</span>
             </div>
         );
     }

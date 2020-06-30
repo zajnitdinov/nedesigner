@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 @font-face{
   font-family: "OpenSansBold";
@@ -50,6 +51,9 @@ body {
         &:focus {
           outline: none;
         }
+        &:hover {
+          cursor: text;
+        }
       }
     }
   }
@@ -83,39 +87,31 @@ body {
 .tag {
   padding: 2px 5px;
   margin: 3px 1px;
-  font-size: 12px;
+  font-size: 16px;
   display: inline-block;
   cursor: pointer;
   &:first-letter {
     text-transform: uppercase;
   }
-  & > span {
-    color: $border-color;
-    font-weight: bold;
-  }
   &__react {
-    border-bottom: 2px solid #61dafb;
-    transition: 300ms ease-in;
-    &:hover {
-      background-color: #61dafb;
-      transition: 300ms ease-in;
-    }
+    @include tag(#61dafb);
   }
   &__vue {
-    border-bottom: 2px solid #4fc08d;
-    transition: 300ms ease-in;
-    &:hover {
-      background-color: #4fc08d;
-      color: white;
-      transition: 300ms ease-in;
-      & span {
-        color: white;
-        transition: 300ms ease-in;
-      }
-    }
+    @include tag(#4fc08d, white);
+  }
+  &__references {
+    @include tag(#383e56, #eedad1);
+  }
+  &__minimalism {
+    @include tag(#fa1616, #e4f9ff);
+  }
+  &__site {
+    @include tag(#ea907a, #f4f7c5);
   }
 }
 .dropdown__menu__tag {
+  background-color: white;
+  z-index: 2;
   width: 100%;
   position: relative;
   display: inline-block;
